@@ -54,3 +54,11 @@ def binary_search_first_occurence(sorted_list: list[float], target: float) -> in
                 right = mid - 1
             
     return -1
+
+
+
+def linearSearch(arr, x):
+    for i in range(len(arr)):
+        if x == arr[i]:
+            return i
+    return -1
