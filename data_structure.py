@@ -1,3 +1,8 @@
+from collections import defaultdict, deque
+
+
+
+
 class Stack:
     def __init__(self) -> None:
         """Stack (FILO)
@@ -174,6 +179,25 @@ def dfs(g:Graph, nodeId:int, visited)->list:
             visit += dfs(g, dest.id, visited)
 
     return visit        
+
+
+
+def dfs(edges:list[list], source:int)->list:
+    """Depth First Search (DFS)
+
+    Args:
+        edges (list[list]): list of edges with sources and destinations, ex. [[0,1],[0,2]]
+        source (int): the starting node of the search
+    Returns:
+        list: returns the list of the nodes in the path in order visited by the algorithm
+    """
+    graph = defaultdict(list)
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    
+    
+
             
             
             
