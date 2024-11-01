@@ -137,6 +137,8 @@ class DiGraph():
                     nodes.append(dest)
         return nodes
                 
+
+    
     def __str__(self):
         connections = ''
         for src in self.edges:
@@ -182,7 +184,7 @@ def dfs(g:Graph, nodeId:int, visited)->list:
 
 
 
-def dfs(edges:list[list], source:int)->list:
+def dfs_1(edges:list[list], source:int)->list:
     """Depth First Search (DFS)
 
     Args:
@@ -196,9 +198,53 @@ def dfs(edges:list[list], source:int)->list:
         graph[u].append(v)
         graph[v].append(u)
     
+    visited= set()
+    stack  = deque([source])
+    path= []
     
-
+    while stack:
+        node = stack.pop()
+        
+        if node not in visited:
+            path.append(node)
+            visited.add(node)
             
+            for nbr in graph[node]:
+                if nbr not in visited:
+                    stack.append(nbr)
+    return path
+
+        
+
+def bfs(edges:list[list[int]], source:int)    :
+    """Breadth First Search (BFS)
+
+    Args:
+        edges (list[list]): list of edges with sources and destinations, ex. [[0,1],[0,2]]
+        source (int): the starting node of the search
+    Returns:
+        list: returns the list of the nodes in the path in order visited by the algorithm
+    """
+    graph = defaultdict(list)
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    
+    visited= set()
+    queue  = deque([source])
+    path = []
+    
+    while queue:
+        node = queue.popleft()
+        
+        if node not in visited:
+            path.append(node)
+            visited.add(node)
+                        
+            for nbr in graph[node]:
+                if nbr not in visited:
+                    queue.append(nbr)
+    return path
             
             
     

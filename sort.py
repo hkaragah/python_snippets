@@ -2,6 +2,7 @@ def bubbleSort(arr):
     for i in range(len(arr), 0, -1):
         for j in range(i-1):
             if arr[j] > arr[j+1]:
+                # Swap
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr
 
@@ -27,6 +28,7 @@ def mergeSort(arr):
                 arr[k] = right[j]
                 j += 1
                 k += 1
+                
         while i < len(left):
             arr[k] = left[i]
             i += 1
